@@ -3,9 +3,27 @@ const fs = require('fs');
 const api = require('./routes/index.js');
 const path = require('path');
 
-const PORT = process.env.port || 3001;
+const PORT = 3001;
 
+const app = express();
 
+app.get('/', (req, res) => {
+    res.send(
+        `<p>adding saving and deleting notes</p>`
+    );
+});
+
+app.get('/api/notes', (req, res) => {
+    res.json({
+        term: 'api',
+        description:
+        'A note taking application allowing clients to add, delete and save notes',
+    });
+});
+
+app.listen(PORT, () =>
+console.log(`Example app listening at http://localhost:${PORT}`)
+);
 //create a port to listen on 3001
 //create const and needed requires
 //create a db.json
